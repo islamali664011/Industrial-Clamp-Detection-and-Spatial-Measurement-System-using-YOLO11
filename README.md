@@ -466,6 +466,42 @@ The dataset is exported in **YOLO11** format and automatically prepared for trai
 - Downloads the dataset in YOLO11 format.
 - Prepares the dataset for model training.
 
+## 📁 File: `clamp_image_inspection.py`
+
+### 📌 Purpose
+
+This script performs image-based industrial inspection using the trained YOLO11 model.
+
+The system detects all clamp components and wires, then applies geometric analysis algorithms to calculate spatial relationships between detected objects.
+
+---
+
+### Object Detection Classes
+
+The YOLO11 model detects four classes:
+
+- R1 → Clamp Head
+- R2 → Clamp Body
+- H → Clamp Height
+- Wire → Industrial Wire
+
+---
+
+### Measurement Operations
+
+After detection, the script calculates:
+
+- Distance between R2 and the nearest wire.
+- Shortest wire distance from the reference clamp.
+- Longest wire distance.
+- Distance between the longest and shortest detected wires.
+
+All measurements are initially calculated in pixels and converted into centimetres using calibration parameters.
+
+---
+
+### Main Processing Pipeline
+
 
 
 
