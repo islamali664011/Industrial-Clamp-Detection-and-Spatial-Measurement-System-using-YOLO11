@@ -279,11 +279,40 @@ This modular design makes the project easier to maintain, debug, extend, and int
 
 The project is organized into multiple Python scripts, where each file is responsible for a specific stage of the inspection pipeline.
 
+
 | File | Description |
 |------|-------------|
 | `extract_frames.py` | Extracts frames from production videos for dataset creation and annotation. |
+| `download_dataset.py` | Downloads the annotated dataset from Roboflow in YOLO11 format. |
+
+
 | `train_yolo.py` | Trains the YOLO11 object detection model. |
 | `image_detection.py` | Performs object detection on images. |
 | `video_detection.py` | Performs object detection on production videos. |
 | `distance_measurement.py` | Calculates spatial distances and converts pixels to centimetres. |
 | `utils.py` | Contains helper functions used throughout the project. |
+
+
+
+
+## 📁 File: `download_dataset.py`
+
+### 📌 Purpose
+
+This script downloads the annotated dataset directly from **Roboflow** after the annotation process is completed.
+
+The dataset is exported in **YOLO11** format and automatically prepared for training.
+
+### ✨ Features
+
+- Connects to the Roboflow workspace.
+- Accesses the target project.
+- Selects the required dataset version.
+- Downloads the dataset in YOLO11 format.
+- Prepares the dataset for model training.
+
+### Libraries
+
+- Roboflow SDK
+
+
