@@ -284,6 +284,8 @@ The project is organized into multiple Python scripts, where each file is respon
 |------|-------------|
 | `extract_frames.py` | Extracts frames from production videos for dataset creation and annotation. |
 | `download_dataset.py` | Downloads the annotated dataset from Roboflow in YOLO11 format. |
+| `train_yolo.py` | Trains the YOLO11 object detection model using the annotated dataset. |
+| `evaluate_model.py` | Evaluates the trained model and reports Precision, Recall, mAP@50, and mAP@50-95. |
 
 
 | `train_yolo.py` | Trains the YOLO11 object detection model. |
@@ -314,5 +316,94 @@ The dataset is exported in **YOLO11** format and automatically prepared for trai
 ### Libraries
 
 - Roboflow SDK
+---
+
+# 📁 File: `train_yolo.py`
+
+## 📌 Purpose
+
+This script trains the **YOLO11** object detection model using the annotated dataset exported from **Roboflow**.
+
+The training configuration is optimized for high-resolution industrial images (**1280 × 1280**) to accurately detect clamp components (**R1, R2, H**) and industrial wires.
+
+---
+
+## ✨ Features
+
+- Loads the pretrained **YOLO11** model.
+- Uses the annotated Roboflow dataset.
+- Trains the model for **150 epochs**.
+- Supports **GPU acceleration**.
+- Saves trained model weights automatically.
+- Generates training logs and performance curves.
+- Produces the best-performing model (`best.pt`).
+
+---
+
+## ⚙️ Training Configuration
+
+| Parameter | Value |
+|-----------|--------|
+| Model | YOLO11s |
+| Image Size | 1280 × 1280 |
+| Epochs | 150 |
+| Batch Size | 4 |
+| Workers | 2 |
+| Device | GPU |
+| Pretrained | Yes |
+| Cache | Enabled |
+
+---
+
+## 📚 Libraries
+
+- Ultralytics YOLO
+- PyTorch
+
+---
+
+# 📁 File: `evaluate_model.py`
+
+## 📌 Purpose
+
+This script evaluates the trained **YOLO11** model using the validation dataset.
+
+It computes the standard object detection metrics to assess the model's performance and overall detection accuracy.
+
+---
+
+## 📊 Evaluation Metrics
+
+- Precision
+- Recall
+- mAP@50
+- mAP@50-95
+
+---
+
+## ✨ Features
+
+- Loads the trained model (`best.pt`).
+- Performs validation on the dataset.
+- Computes standard object detection metrics.
+- Displays model performance statistics.
+- Measures the overall detection quality.
+
+---
+
+## 📚 Libraries
+
+- Ultralytics YOLO
+
+---
 
 
+
+
+
+
+
+
+
+
+ 
