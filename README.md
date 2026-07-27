@@ -290,6 +290,7 @@ The project is organized into multiple Python scripts, where each file is respon
 | `download_dataset.py` | Downloads the annotated dataset from Roboflow in YOLO11 format. |
 | `train_yolo.py` | Trains the YOLO11 object detection model using the annotated dataset. |
 | `evaluate_model.py` | Evaluates the trained model and reports Precision, Recall, mAP@50, and mAP@50-95. |
+| `image_detection.py` | Performs YOLO11 inference on individual images to detect clamps and wires. |
 
 
 | `train_yolo.py` | Trains the YOLO11 object detection model. |
@@ -299,38 +300,12 @@ The project is organized into multiple Python scripts, where each file is respon
 | `utils.py` | Contains helper functions used throughout the project. |
 
 
-
-
-## 📁 File: `download_dataset.py`
-
-### 📌 Purpose
-
-This script downloads the annotated dataset directly from **Roboflow** after the annotation process is completed.
-
-The dataset is exported in **YOLO11** format and automatically prepared for training.
-
-### ✨ Features
-
-- Connects to the Roboflow workspace.
-- Accesses the target project.
-- Selects the required dataset version.
-- Downloads the dataset in YOLO11 format.
-- Prepares the dataset for model training.
-
+ 
 ### Libraries
 
 - Roboflow SDK
 ---
-
-# 📁 File: `train_yolo.py`
-
-## 📌 Purpose
-
-This script trains the **YOLO11** object detection model using the annotated dataset exported from **Roboflow**.
-
-The training configuration is optimized for high-resolution industrial images (**1280 × 1280**) to accurately detect clamp components (**R1, R2, H**) and industrial wires.
-
----
+ 
 
 ## ✨ Features
 
@@ -366,16 +341,7 @@ The training configuration is optimized for high-resolution industrial images (*
 
 ---
 
-# 📁 File: `evaluate_model.py`
-
-## 📌 Purpose
-
-This script evaluates the trained **YOLO11** model using the validation dataset.
-
-It computes the standard object detection metrics to assess the model's performance and overall detection accuracy.
-
----
-
+ 
 ## 📊 Evaluation Metrics
 
 - Precision
@@ -403,6 +369,102 @@ It computes the standard object detection metrics to assess the model's performa
 
 
 
+
+
+٩١٢٢١١٢٢١٢١
+
+## 📁 File: `image_detection.py`
+
+### 📌 Purpose
+
+This script performs image-based inference using the trained YOLO11 model.
+
+The objective of this stage is to validate the detection performance of the trained model by detecting the clamp components and wires in individual test images.
+
+This stage focuses only on object detection and visualization.  
+Spatial measurements and distance calculations are performed in a separate processing pipeline.
+
+---
+
+### 🎯 Detection Classes
+
+The model detects the following objects:
+
+- **R1** – Clamp Head
+- **R2** – Clamp Body
+- **H** – Clamp Height
+- **Wire** – Industrial Wire
+
+---
+
+### ✨ Features
+
+- Loads the trained YOLO11 model.
+- Performs inference on test images.
+- Applies confidence threshold filtering.
+- Draws bounding boxes and class labels.
+- Visualizes detection results.
+
+---
+
+### Workflow
+
+```
+Input Image
+      │
+      ▼
+Load YOLO11 Model
+      │
+      ▼
+Object Detection
+      │
+      ▼
+Bounding Box Visualization
+      │
+      ▼
+Detection Result
+```
+
+
+
+
+# 📁 File: `evaluate_model.py`
+
+## 📌 Purpose
+
+This script evaluates the trained **YOLO11** model using the validation dataset.
+
+It computes the standard object detection metrics to assess the model's performance and overall detection accuracy.
+
+---
+
+
+# 📁 File: `train_yolo.py`
+
+## 📌 Purpose
+
+This script trains the **YOLO11** object detection model using the annotated dataset exported from **Roboflow**.
+
+The training configuration is optimized for high-resolution industrial images (**1280 × 1280**) to accurately detect clamp components (**R1, R2, H**) and industrial wires.
+
+---
+
+
+## 📁 File: `download_dataset.py`
+
+### 📌 Purpose
+
+This script downloads the annotated dataset directly from **Roboflow** after the annotation process is completed.
+
+The dataset is exported in **YOLO11** format and automatically prepared for training.
+
+### ✨ Features
+
+- Connects to the Roboflow workspace.
+- Accesses the target project.
+- Selects the required dataset version.
+- Downloads the dataset in YOLO11 format.
+- Prepares the dataset for model training.
 
 
 
