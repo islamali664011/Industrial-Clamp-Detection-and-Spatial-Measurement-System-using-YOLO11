@@ -28,6 +28,8 @@ In addition, the system detects:
 
 - **Wire**
 
+Training : 150 EPOCHS
+
 Therefore, the trained YOLO11 model detects the following **four object classes**:
 
 | Class | Description |
@@ -36,6 +38,8 @@ Therefore, the trained YOLO11 model detects the following **four object classes*
 | R2 | Clamp Body |
 | H | Clamp Height |
 | Wire | Industrial Wire |
+
+
 
 ---
 
