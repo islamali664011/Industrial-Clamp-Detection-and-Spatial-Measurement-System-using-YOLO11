@@ -298,6 +298,7 @@ The project is organized into multiple Python scripts, where each file is respon
 | `video_detection.py` | Performs object detection on production videos. |
 | `distance_measurement.py` | Calculates spatial distances and converts pixels to centimetres. |
 | `utils.py` | Contains helper functions used throughout the project. |
+| `industrial_clamp_inspection.py` | Performs real-time clamp and wire detection, verifies clamp integrity, measures spatial distances, computes H height, converts pixel measurements to centimetres, and generates the annotated inspection video. |
 
 
  
@@ -501,6 +502,7 @@ All measurements are initially calculated in pixels and converted into centimetr
 ---
 
 ### Main Processing Pipeline
+
 
 
 
