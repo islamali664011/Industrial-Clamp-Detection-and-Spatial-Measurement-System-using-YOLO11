@@ -274,3 +274,16 @@ This modular design makes the project easier to maintain, debug, extend, and int
 - Production-ready workflow.
 
 ---
+
+## 📂 Source Code
+
+The project is organized into multiple Python scripts, where each file is responsible for a specific stage of the inspection pipeline.
+
+| File | Description |
+|------|-------------|
+| `extract_frames.py` | Extracts frames from production videos for dataset creation and annotation. |
+| `train_yolo.py` | Trains the YOLO11 object detection model. |
+| `image_detection.py` | Performs object detection on images. |
+| `video_detection.py` | Performs object detection on production videos. |
+| `distance_measurement.py` | Calculates spatial distances and converts pixels to centimetres. |
+| `utils.py` | Contains helper functions used throughout the project. |
